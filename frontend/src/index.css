@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-brand-black text-brand-snow font-sans antialiased;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 60%);
+  }
+  h1, h2, h3, h4 { @apply font-display; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-brand-charcoal; }
+  ::-webkit-scrollbar-thumb { @apply bg-brand-smoke rounded-full; }
+}
+
+@layer components {
+  /* Glass card */
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+           bg-brand-white text-brand-black font-semibold tracking-wide
+           transition-all duration-300 hover:bg-brand-mist hover:shadow-[0_0_24px_rgba(255,255,255,0.25)]
+           active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+           border border-brand-smoke text-brand-snow font-medium tracking-wide
+           transition-all duration-300 hover:border-brand-white hover:text-brand-white
+           active:scale-95;
+  }
+  /* Input */
+  .input-field {
+    @apply w-full bg-brand-charcoal border border-brand-graphite rounded-xl px-4 py-3 text-brand-snow
+           placeholder-brand-smoke outline-none transition focus:border-brand-silver focus:ring-1 focus:ring-brand-silver;
+  }
+  /* Badge */
+  .badge {
+    @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide;
+  }
+  /* Divider */
+  .divider {
+    @apply border-t border-brand-graphite my-6;
+  }
+  /* Nav link */
+  .nav-link {
+    @apply text-brand-silver hover:text-brand-white transition-colors duration-200 text-sm font-medium;
+  }
+  .nav-link-active {
+    @apply text-brand-white font-semibold border-b-2 border-brand-white pb-0.5;
+  }
+}
