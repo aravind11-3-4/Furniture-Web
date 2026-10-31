@@ -37,10 +37,8 @@ export default function Payment() {
       clearCart();
       setTimeout(() => navigate('/'), 3000);
     } catch (err) {
-      // If backend is not running, simulate success for demo
-      setSuccess(true);
-      clearCart();
-      setTimeout(() => navigate('/'), 3000);
+      const msg = err.response?.data?.error || err.response?.data?.message || 'Payment failed. Sign in and make sure the backend is running.';
+      setError(msg);
     } finally {
       setLoading(false);
     }

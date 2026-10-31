@@ -1,14 +1,18 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  // Same-origin in the Vite app so the dev proxy forwards to Spring Boot.
+  // Avoids browser CORS failures that look like "server not running".
+  baseURL: '/api',
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Attach JWT token if present
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem('furniture_token');
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+  const isAuthCall = config.url?.includes('/auth/');
+  if (!isAuthCall) {
+    const token = localStorage.getItem('furniture_token');
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 

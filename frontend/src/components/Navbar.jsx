@@ -78,9 +78,14 @@ export default function Navbar({ cartCount = 0 }) {
               </button>
             </div>
           ) : (
-            <Link to="/login" className="btn-primary py-2 px-4 text-sm">
-              <User size={16} /> Sign In
-            </Link>
+            <>
+              <Link to="/register" className="btn-ghost py-2 px-4 text-sm">
+                Register
+              </Link>
+              <Link to="/login" className="btn-primary py-2 px-4 text-sm">
+                <User size={16} /> Sign In
+              </Link>
+            </>
           )}
         </div>
 
@@ -103,9 +108,14 @@ export default function Navbar({ cartCount = 0 }) {
               <LogOut size={16} /> Sign Out
             </button>
           ) : (
-            <Link to="/login" className="btn-primary w-full" onClick={() => setMenuOpen(false)}>
-              <User size={16} /> Sign In
-            </Link>
+            <>
+              <Link to="/register" className="btn-ghost w-full" onClick={() => setMenuOpen(false)}>
+                Register
+              </Link>
+              <Link to="/login" className="btn-primary w-full" onClick={() => setMenuOpen(false)}>
+                <User size={16} /> Sign In
+              </Link>
+            </>
           )}
         </div>
       )}

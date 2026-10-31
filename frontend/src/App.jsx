@@ -6,6 +6,7 @@ import Category from './pages/Category';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
 
 function ProtectedAdmin({ children }) {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/cart"     element={<Cart />} />
           <Route path="/payment"  element={<Payment />} />
           <Route path="/login"    element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/admin"    element={<ProtectedAdmin><AdminDashboard /></ProtectedAdmin>} />
           <Route path="*"         element={<Navigate to="/" replace />} />
         </Routes>

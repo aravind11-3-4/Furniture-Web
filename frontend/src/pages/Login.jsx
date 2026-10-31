@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { User, Lock, Eye, EyeOff, LogIn } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import API from '../api/api';
@@ -26,12 +26,8 @@ export default function Login() {
       login(res.data.token);
       navigate(tab === 'admin' ? '/admin' : '/');
     } catch (err) {
-      // Demo: simulate login when backend is down
-      const demoToken = btoa(JSON.stringify({ typ: 'JWT' })) + '.' +
-        btoa(JSON.stringify({ sub: form.email, role: tab.toUpperCase(), exp: Math.floor(Date.now() / 1000) + 3600 })) +
-        '.demo';
-      login(demoToken);
-      navigate(tab === 'admin' ? '/admin' : '/');
+      const msg = err.response?.data?.error || err.response?.data?.message || 'Login failed. Check your credentials or start the backend.';
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -126,7 +122,7 @@ export default function Login() {
 
         <p className="text-center text-xs text-brand-smoke mt-6">
           Don't have an account?{' '}
-          <a href="#" className="text-brand-silver hover:text-brand-white transition underline">Create one</a>
+          <Link to="/register" className="text-brand-silver hover:text-brand-white transition underline">Create one</Link>
         </p>
       </div>
     </div>
