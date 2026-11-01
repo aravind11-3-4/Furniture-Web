@@ -1,0 +1,27 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Kubernetes secrets
+k8s/*secret*
+k8s/*Secret*
+
+# Java / Maven
+**/target/
+backend/target/
+
+# Node / React
+**/node_modules/
+**/dist/
+
+# Logs and temporary files
+*.log
+logs/
+
+# IDE files
+.idea/
+.vscode/
