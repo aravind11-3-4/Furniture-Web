@@ -107,19 +107,19 @@ jobs:
 
     steps:
       - name: Verify Kubernetes connection
-        shell: pwsh
+        shell: powershell
         run: |
           kubectl config current-context
           kubectl get nodes
 
       - name: Deploy backend
-        shell: pwsh
+        shell: powershell
         run: |
           kubectl set image deployment/backend backend=ghcr.io/aravind11-3-4/furniture-web-backend:${{ github.sha }}
           kubectl rollout status deployment/backend --timeout=180s
 
       - name: Deploy frontend
-        shell: pwsh
+        shell: powershell
         run: |
           kubectl set image deployment/frontend frontend=ghcr.io/aravind11-3-4/furniture-web-frontend:${{ github.sha }}
           kubectl rollout status deployment/frontend --timeout=180s
